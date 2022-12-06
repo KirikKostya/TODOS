@@ -50,7 +50,8 @@
   border: 2px solid black;
   border-radius: 20px;
   text-align: center;
-  margin: 5px 15px ;
+  margin: 5px 15px;
+  padding: 2px 0 0 6px ;
   color: #211d1d;
   background-color: rgb(180, 157, 129);
   overflow: clip;
@@ -58,14 +59,20 @@
   box-shadow: 4px 4px 4px 2px rgb(194, 192, 192);
 }
 .Task:hover{
-  box-shadow: 4px 4px 4px 2px rgb(194, 54, 54);
+  box-shadow: 4px 4px 4px 2px rgb(206, 83, 83);
 }
 .Task button{
-  background-color: rgb(240, 54, 85);
+  width: 35px;
+  height: 25px;
+  background-color: rgb(206, 83, 83);
   border: none;
-  border-radius: 40%;
-  margin-top: 25px;
+  border-radius: 10px;
+  margin-top: 30px;
+  font-size: large;
+  font-weight: 700;
 }
 .Task button:hover{
-  background-color: red;
+  cursor: pointer;
+  border: 2px solid rgb(16, 5, 5);
+  background-color: rgb(255, 41, 41);
 }

@@ -1,7 +1,6 @@
 import './App.css';
 import {useDispatch, useSelector} from 'react-redux'
-import {useState} from 'react'
-import { NavLink } from 'react-router-dom';
+import {useEffect, useState} from 'react'
 
 function App() {
   const count = useSelector(state=>state.ListOfTask)
@@ -9,19 +8,31 @@ function App() {
 
   const dispatch = useDispatch()
 
-  const Input = document.querySelector('#INPUT');
-  const Alert = document.querySelector('.Alert');
+  
+  let Input; 
+  let Alert;
 
   const add = () => {
     if(Input.value!==''){
       Alert.classList.remove('close')
       setTimeout(()=>Alert.classList.add('close'), 3000)
 
-      dispatch({type: 'PUSH', payload: {id: Math.random(), date: new Date().toLocaleString(), tittle: value , task: ''}})
+      dispatch({type: 'PUSH', payload: {id: Math.random(), date: new Date().toLocaleString(), tittle: Input.value , task: ''}})
       Input.value = ''
       setValue('')
     } 
   }
+
+    useEffect(()=>{
+      Input = document.querySelector('#INPUT');
+      Alert = document.querySelector('.Alert');
+      document.addEventListener('keyup', (e)=>{
+        if(e.code == "Enter"){
+          add();
+        }
+      })
+    }, )
+  
 
   return (
     <div className="App">
@@ -40,18 +51,17 @@ function App() {
           <ul className='AllTask'>
             {
               count.map(el=>(
-                <div key={el.id}><li className='Task' key={el.id}>{el.tittle} 
-                    <h4>{el.date}</h4>
+                <div key={el.id}><h4 className='Task' key={el.id}>{el.tittle} 
+                    <p>{el.date}</p>
                     <button onClick={ ()=>{
                       dispatch({type: 'POP', payload: el})
-                    }}>&times;</button></li>
+                    }}>&times;</button></h4>
                   
                 </div>
               ))
             }
           </ul>
 
-          <p>qweqwe123</p>
       </header>
     </div>
   );
